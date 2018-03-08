@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -m 755 /rw/apt-cache
+mkdir -m 755 /rw/apt-cache/partial
+echo 'Dir::Cache{Archives /rw/apt-cache/}' > /rw/apt-cache/move-cache
+echo 'Dir::Cache::Archives /rw/apt-cache;' >> /rw/apt-cache/move-cache
+ln -s /rw/apt-cache/move-cache /etc/apt/apt.conf.d/move-cache
+chmod +x /rw/config/rc.local
+echo 'ln -s /rw/apt-cache/move-cache /etc/apt/apt.conf.d/move-cache' >> /rw/config/rc.local
